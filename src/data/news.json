@@ -1,0 +1,37 @@
+[
+  {
+    "id" : 1,
+    "name": "AMOUR Tshirt",
+    "price": "39.90",
+    "image": "/collections/amour.jpg",
+    "image2": "/collections/amour2.jpg"
+  },
+  {
+    "id" : 2,
+    "name": "NATURE Tshirt",
+    "price": "39.90",
+    "image": "/collections/nature.jpg",
+    "image2": "/collections/nature2.jpg"
+  },
+  {
+    "id" : 3,
+    "name": "TOKYO Tshirt",
+    "price": "39.90",
+    "image": "/collections/tokyo.jpg",
+    "image2": "/collections/tokyo2.jpg"
+  },
+  {
+    "id" : 4,
+    "name": "ROMANCE Tshirt",
+    "price": "39.90",
+    "image": "/collections/romance.jpg",
+    "image2": "/collections/romance2.jpg"
+  },
+  {
+    "id" : 5,
+    "name": "CHIC Pants",
+    "price": "49.90",
+    "image": "/collections/pant.jpg",
+    "image2": "/collections/pant2.jpg"
+  }
+]

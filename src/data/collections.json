@@ -1,0 +1,42 @@
+[
+  {
+    "id" : 1,
+    "name": "AMOUR Tshirt",
+    "price": 39.90,
+    "colors": ["black", "white", "orange", "azur", "lime"],
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "categorie": "Tshirt"
+  },
+  {
+    "id" : 2,
+    "name": "NATURE Tshirt",
+    "price": 39.90,
+    "colors": ["white", "orange", "lime"],
+    "sizes": ["S", "M", "L", "XL"],
+    "categorie": "Tshirt"
+  },
+  {
+    "id" : 3,
+    "name": "TOKYO Tshirt",
+    "price": 39.90,
+    "colors": ["black", "white", "brown", "azur", "lime"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "categorie": "Tshirt"
+  },
+  {
+    "id" : 4,
+    "name": "ROMANCE Tshirt",
+    "price": 39.90,
+    "colors": ["black", "orange"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "categorie": "Tshirt"
+  },
+  {
+    "id" : 5,
+    "name": "CHIC Pants",
+    "price": 49.90,
+    "colors": ["white", "grey", "cream"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "categorie": "Pants"
+  }
+]
