@@ -6,7 +6,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="px-8 py-8 mt-24 lg:mt-32">
+    <footer className="px-8 py-8 mt-16 lg:mt-24">
       <div className="flex flex-col gap-12">
         <div>
         <img src={logo} alt="Logo de l'entreprise"/>

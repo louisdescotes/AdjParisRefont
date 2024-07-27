@@ -4,6 +4,8 @@ import Header from '../layout/Header'
 import Hero from '../layout/Landing/Hero'
 import Arrivals from '../layout/Landing/Arrivals'
 import ProductImage from '../layout/Landing/ProductImage'
+import Carousel2 from '../layout/Landing/Carousel2'
+import NewLetter from '../layout/Landing/NewLetter'
 
 
 export default function Landing() {
@@ -13,6 +15,8 @@ export default function Landing() {
       <Hero />
       <Arrivals />
       <ProductImage />
+      <Carousel2 />
+      <NewLetter />
       <Footer />
     </div>
   )

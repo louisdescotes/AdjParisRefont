@@ -1,0 +1,45 @@
+[
+  {
+    "id" : 1,
+    "name": "Romance Tshirt",
+    "price": "39.90",
+    "image": "/RomanceB01.jpg",
+    "image2": "/RomanceB02.jpg"
+  },
+  {
+    "id" : 2,
+    "name": "Nature Tshirt",
+    "price": "39.90",
+    "image": "/NatureW01.jpg",
+    "image2": "/NatureW04.jpg"
+  },
+  {
+    "id" : 3,
+    "name": "Tokyo Tshirt",
+    "price": "39.90",
+    "image": "/TokyoB01.jpg",
+    "image2": "/TokyoB04.jpg"
+  },
+  {
+    "id" : 4,
+    "name": "Amour Tshirt",
+    "price": "39.90",
+    "image": "/AmourA01.jpg",
+    "image2": "/AmourA04.jpg"
+  },
+  {
+    "id" : 5,
+    "name": "Romance Tshirt",
+    "price": "39.90",
+    "image": "/TokyoW01.jpg",
+    "image2": "/TokyoW04.jpg"
+  },
+
+  {
+    "id" : 6,
+    "name": "Amour Tshirt",
+    "price": "39.90",
+    "image": "/AmourL01.jpg",
+    "image2": "/AmourL04.jpg"
+  }
+]
