@@ -7,10 +7,43 @@ export default function List() {
   const [selectedColors, setSelectedColors] = useState(() => {
     const initialColors = {};
     collection.forEach((item) => {
-      initialColors[item.id] = null; 
+      initialColors[item.id] = null;
     });
     return initialColors;
   });
+
+  const [filters, setFilters] = useState({
+    colors: [],
+    sizes: [],
+    categories: [],
+  })
+
+  const filterSelected = (filterType, value) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterType]: Array.isArray(prevFilters[filterType])
+        ? prevFilters[filterType].includes(value)
+          ? prevFilters[filterType].filter((item) => item !== value)
+          : [...prevFilters[filterType], value]
+        : [value],
+    }));
+  };
+
+  const filteredCollection = collection.filter((item) => {
+    const matchesColor = filters.colors.length
+      ? item.colors.some((color) => filters.colors.includes(color))
+      : true;
+    const matchesSize = filters.sizes.length
+      ? item.sizes.some((size) => filters.sizes.includes(size))
+      : true;
+    const matchesCategory = filters.categories.length
+      ? filters.categories.includes(item.categorie)
+      : true;
+
+    return matchesColor && matchesSize && matchesCategory;
+  });
+
+
 
   const handleMouseEnter = (id) => {
     setHover(id);
@@ -60,17 +93,53 @@ export default function List() {
           <div className="flex">
             <p>Filter</p>
             <ListFilter />
+            <h2 className="text-2xl font-bold">Colors</h2>
+            <div className="flex flex-col">
+              {[...new Set(collection.map((item) => item.colors).flat())].map(
+                (color, index) => (
+                  <div key={index}>
+                    <input type="checkbox" id={`color-${color}`} onChange={() => filterSelected("colors", color)}/>
+                    <label htmlFor={`color-${color}`}>{color}</label>
+                  </div>
+                )
+              )}
+            </div>
+
+            <h2 className="text-2xl font-bold">Sizes</h2>
+            <div className="flex flex-col">
+              {[...new Set(collection.map((item) => item.sizes).flat())].map(
+                (size, index) => (
+                  <div key={index}>
+                    <input type="checkbox" id={`size-${size}`} onChange={() => filterSelected("sizes", size)}/>
+                    <label htmlFor={`size-${size}`}>{size}</label>
+                  </div>
+                )
+              )}
+            </div>
+
+            <h2 className="text-2xl font-bold">Categorie</h2>
+            <div className="flex flex-col">
+              {[...new Set(collection.map((item) => item.categorie))].map(
+                (categorie, index) => (
+                  <div key={index}>
+                    <input type="checkbox" id={`categorie-${categorie}`} onChange={() => filterSelected("categories", categorie)}/>
+                    <label htmlFor={`categorie-${categorie}`}>{categorie}</label>
+                  </div>
+                )
+              )}
+            </div>
+            
           </div>
         </div>
         <aside className="grid grid-cols-4 grid-rows-custom gap-x-5 gap-y-16">
-          {collection.map((items) => {
-            const selectedColor = selectedColors[items.id];
-            const baseImage = selectedColor
-              ? `${items.collection}${convertColor(selectedColor)}01`
-              : items.imagePreview;
-            const hoverImage = selectedColor
-              ? `${items.collection}${convertColor(selectedColor)}04`
-              : items.imagePreview2;
+        {filteredCollection.map((items) => {
+        const selectedColor = selectedColors[items.id];
+        const baseImage = selectedColor
+          ? `${items.collection}${convertColor(selectedColor)}01`
+          : items.imagePreview;
+        const hoverImage = selectedColor
+          ? `${items.collection}${convertColor(selectedColor)}04`
+          : items.imagePreview2;
 
             return (
               <article key={items.id}>
@@ -99,9 +168,7 @@ export default function List() {
                           className={`
                           ${items.colors.length > 1 ? "flex" : "hidden"}
                           size-6 rounded-full border cursor-pointer ${
-                            selectedColor === color
-                              ? "ring ring-blue-500"
-                              : ""
+                            selectedColor === color ? "ring ring-blue-500" : ""
                           }`}
                           style={{
                             backgroundColor: color,
