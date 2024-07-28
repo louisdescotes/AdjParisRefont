@@ -2,67 +2,72 @@
   {
     "id" : 1,
     "name": "AMOUR Tshirt",
+    "collection": "Amour",
     "price": "39.90",
-    "imagePreview": "AmourW01.jpg",
-    "imagePreview2": "AmourW04.jpg",
+    "imagePreview": "AmourW01",
+    "imagePreview2": "AmourW04",
     "images": ["AmourB01.jpg", "AmourB02.jpg", "AmourB03.jpg", "AmourB04.jpg",
     "AmourO01.jpg", "AmourO02.jpg", "AmourO03.jpg", "AmourO04.jpg",
     "AmourW01.jpg", "AmourW02.jpg", "AmourW03.jpg", "AmourW04.jpg",
     "AmourA01.jpg", "AmourA02.jpg", "AmourA03.jpg", "AmourA04.jpg",
     "AmourL01.jpg", "AmourL02.jpg", "AmourL03.jpg", "AmourL04.jpg"
   ],
-    "colors": ["black", "orange", "white", "azur", "lime"],
+    "colors": ["#151414", "#FEA480", "#FAFAFA", "#C2D8EF", "#AEE4DD"],
     "sizes": ["XS", "S", "M", "L", "XL"],
     "categorie": "Tshirt"
   },
   {
     "id" : 2,
     "name": "ROMANCE Tshirt",
+    "collection": "Romance",
     "price": "39.90",
-    "imagePreview": "RomanceB01.jpg",
-    "imagePreview2": "RomanceB04.jpg",
+    "imagePreview": "RomanceB01",
+    "imagePreview2": "RomanceB02",
     "images": ["RomanceB01.jpg", "RomanceB02.jpg", "RomanceB03.jpg", "RomanceB04.jpg"],
-    "colors": ["black"],
+    "colors": ["#151414"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Tshirt"
   },
   {
     "id" : 3,
     "name": "NATURE Tshirt",
+    "collection": "Nature",
     "price": "39.90",
-    "imagePreview": "NatureL01.jpg",
-    "imagePreview2": "NatureL04.jpg",
+    "imagePreview": "NatureL01",
+    "imagePreview2": "NatureL04",
     "images": ["NatureL01.jpg", "NatureL02.jpg", "NatureL03.jpg", "NatureL04.jpg",
     "NatureO01.jpg", "NatureO02.jpg", "NatureO03.jpg", "NatureO04.jpg",
     "NatureW01.jpg", "NatureW02.jpg", "NatureW03.jpg", "NatureW04.jpg",
     "NatureB01.jpg", "NatureB02.jpg", "NatureB03.jpg", "NatureB04.jpg"
   ],
-    "colors": ["lime", "orange", "white", "black"],
+    "colors": ["#AEE4DD", "#FEA480", "#FAFAFA", "#151414"],
     "sizes": ["S", "M", "L", "XL"],
     "categorie": "Tshirt"
   },
   {
     "id" : 4,
     "name": "Art Tshirt",
+    "collection": "Art",
     "price": "39.90",
-    "imagePreview": "ArtA01.jpg",
-    "imagePreview2": "ArtA04.jpg",
+    "imagePreview": "ArtA01",
+    "imagePreview2": "ArtA04",
     "images": ["ArtA01.jpg", "ArtA02.jpg", "ArtA03.jpg", "ArtA04.jpg",
     "ArtL01.jpg", "ArtL02.jpg", "ArtL03.jpg", "ArtL04.jpg",
     "ArtW01.jpg", "ArtW02.jpg", "ArtW03.jpg", "ArtW04.jpg",
     "ArtO01.jpg", "ArtO02.jpg", "ArtO03.jpg", "ArtO04.jpg",
     "ArtB01.jpg", "ArtB02.jpg", "ArtB03.jpg", "ArtB04.jpg"
   ],
-    "colors": ["azur", "lime", "white", "orange", "black"],
+    "colors": ["#C2D8EF", "#AEE4DD", "#FAFAFA", "#FEA480", "#151414"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Tshirt"
   },
   {
     "id" : 5,
     "name": "Tokyo Tshirt",
+    "collection": "Tokyo",
     "price": "39.90",
-    "imagePreview": "TokyoO01.jpg",
-    "imagePreview2": "TokyoO04.jpg",
+    "imagePreview": "TokyoO01",
+    "imagePreview2": "TokyoO04",
     "images": ["TokyoO01.jpg", "TokyoO02.jpg", "TokyoO03.jpg", "TokyoO04.jpg",
     "TokyoW01.jpg", "TokyoW02.jpg", "TokyoW03.jpg", "TokyoW04.jpg",
     "TokyoB01.jpg", "TokyoB02.jpg", "TokyoB03.jpg", "TokyoB04.jpg",
@@ -70,7 +75,7 @@
     "TokyoL01.jpg", "TokyoL02.jpg", "TokyoL03.jpg", "TokyoL04.jpg",
     "TokyoA01.jpg", "TokyoA02.jpg", "TokyoA03.jpg", "TokyoA04.jpg"
   ],
-    "colors": ["orange", "white", "black", "cream", "lime", "azur"],
+    "colors": ["#FEA480", "#FAFAFA", "#151414", "#C2A893", "#AEE4DD", "#C2D8EF"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Tshirt"
   },
@@ -78,16 +83,17 @@
   {
     "id" : 6,
     "name": "ART Sweat",
+    "collection": "Art",
     "price": "49.90",
-    "imagePreview": "ArtPO01.jpg",
-    "imagePreview2": "ArtPO04.jpg",
+    "imagePreview": "ArtPO01",
+    "imagePreview2": "ArtPO04",
     "images": [
       "ArtPO01.jpg", "ArtPO02.jpg", "ArtPO03.jpg", "ArtPO04.jpg",
       "ArtPA01.jpg", "ArtPA02.jpg", "ArtPA03.jpg", "ArtPA04.jpg",
       "ArtPL01.jpg", "ArtPL02.jpg", "ArtPL03.jpg", "ArtPL04.jpg",
       "ArtPW01.jpg", "ArtPW02.jpg", "ArtPW03.jpg", "ArtPW04.jpg"
     ],
-    "colors": ["orange", "azur", "lime", "white"],
+    "colors": ["#FEA480", "#C2D8EF", "#AEE4DD", "#FAFAFA"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Sweat"
   },
@@ -95,44 +101,47 @@
   {
     "id" : 7  ,
     "name": "Chic Pants",
+    "collection": "Chic",
     "price": "49.90",
-    "imagePreview": "ChicG01.jpg",
-    "imagePreview2": "ChicG04.jpg",
+    "imagePreview": "ChicG01",
+    "imagePreview2": "ChicG04",
     "images": [
       "ChicG01.jpg", "ChicG02.jpg", "ChicG03.jpg", "ChicG04.jpg",
       "ChicW01.jpg", "ChicW02.jpg", "ChicW03.jpg", "ChicW04.jpg"
     ],
-    "colors": ["grey", "white"],
+    "colors": ["#5D5B70", "#FAFAFA"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Pants"
   },
   {
     "id" : 8  ,
     "name": "Elegence Pants",
+    "collection": "Elegence",
     "price": "49.90",
-    "imagePreview": "ElegenceW01.jpg",
-    "imagePreview2": "ElegenceW04.jpg",
+    "imagePreview": "ElegenceW01",
+    "imagePreview2": "ElegenceW04",
     "images": [
       "ElegenceW01.jpg", "ElegenceW02.jpg", "ElegenceW03.jpg", "ElegenceW04.jpg",
       "ElegenceR01.jpg", "ElegencRW02.jpg", "ElegenceR03.jpg", "ElegenceR04.jpg",
       "ElegenceB01.jpg", "ElegencBW02.jpg", "ElegenceB03.jpg", "ElegenceB04.jpg"
     ],
-    "colors": ["white", "rose", "black"],
+    "colors": ["#FAFAFA", "#C5766F", "#151414"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Pants"
   },
   {
     "id" : 9  ,
     "name": "Elite Pants",
+    "collection": "Elite",
     "price": "49.90",
-    "imagePreview": "EliteL01.jpg",
-    "imagePreview2": "EliteL04.jpg",
+    "imagePreview": "EliteL01",
+    "imagePreview2": "EliteL04",
     "images": [
       "EliteL01.jpg", "EliteL02.jpg", "EliteL03.jpg", "EliteL04.jpg",
       "EliteB01.jpg", "EliteB02.jpg", "EliteB03.jpg", "EliteB04.jpg",
       "EliteG01.jpg", "EliteG02.jpg", "EliteG03.jpg", "EliteG04.jpg"
     ],
-    "colors": ["lime", "white", "grey"],
+    "colors": ["#AEE4DD", "#151414", "#5D5B70"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Pants"
   },
@@ -140,15 +149,16 @@
   {
     "id" : 10  ,
     "name": "Arcade Jackets",
+    "collection": "Arcade",
     "price": "49.90",
-    "imagePreview": "ArcadeC01.jpg",
-    "imagePreview2": "ArcadeC04.jpg",
+    "imagePreview": "ArcadeC01",
+    "imagePreview2": "ArcadeC04",
     "images": [
       "ArcadeC01.jpg", "ArcadeC02.jpg", "ArcadeC03.jpg", "ArcadeC04.jpg",
       "ArcadeM01.jpg", "ArcadeM02.jpg", "ArcadeM03.jpg", "ArcadeM04.jpg",
       "ArcadeB01.jpg", "ArcadeB02.jpg", "ArcadeB03.jpg", "ArcadeB04.jpg"
     ],
-    "colors": ["cream", "military", "black"],
+    "colors": ["#C2A893", "#3F3C2F", "#151414"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Jackets"
   },
@@ -156,30 +166,32 @@
   {
     "id" : 11  ,
     "name": "Exeption Cardigan",
+    "collection": "Exeption",
     "price": "49.90",
-    "imagePreview": "ExeptionG01.jpg",
-    "imagePreview2": "ExeptionG04.jpg",
+    "imagePreview": "ExeptionG01",
+    "imagePreview2": "ExeptionG03",
     "images": [
       "ExeptionG01.jpg", "ExeptionG02.jpg", "ExeptionG03.jpg", "ExeptionG04.jpg",
       "ExeptionC01.jpg", "ExeptionC02.jpg", "ExeptionC03.jpg", "ExeptionC04.jpg",
       "ExeptionW01.jpg", "ExeptionW02.jpg", "ExeptionW03.jpg", "ExeptionW04.jpg"
     ],
-    "colors": ["grey", "cream", "white"],
+    "colors": ["#5D5B70", "#C2A893", "#FAFAFA"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Cardigan"
   },
   {
     "id" : 12  ,
     "name": "Premium Chic Cardigan",
+    "collection": "PremiumChic",
     "price": "59.90",
-    "imagePreview": "PremiumChicG01.jpg",
-    "imagePreview2": "PremiumChicG04.jpg",
+    "imagePreview": "PremiumChicG01",
+    "imagePreview2": "PremiumChicG04",
     "images": [
       "PremiumChicG01.jpg", "PremiumChicG02.jpg", "PremiumChicG03.jpg", "PremiumChicG04.jpg",
       "PremiumChicB01.jpg", "PremiumChicB02.jpg", "PremiumChicB03.jpg", "PremiumChicB04.jpg",
       "PremiumChicW01.jpg", "PremiumChicW02.jpg", "PremiumChicW03.jpg", "PremiumChicW04.jpg"
     ],
-    "colors": ["grey", "black", "white"],
+    "colors": ["#5D5B70", "#151414", "#FAFAFA"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Cardigan"
   },
@@ -187,15 +199,16 @@
   {
     "id" : 13  ,
     "name": "Coeur Chic Pull",
+    "collection": "CoeurChic",
     "price": "49.90",
-    "imagePreview": "CoeurChicW01.jpg",
-    "imagePreview2": "CoeurChicW04.jpg",
+    "imagePreview": "CoeurChicW01",
+    "imagePreview2": "CoeurChicW04",
     "images": [
       "CoeurChicW01.jpg", "CoeurChicW02.jpg", "CoeurChicW03.jpg", "CoeurChicW04.jpg",
       "CoeurChicB01.jpg", "CoeurChicB02.jpg", "CoeurChicB03.jpg", "CoeurChicB04.jpg",
       "CoeurChicC01.jpg", "CoeurChicC02.jpg", "CoeurChicC03.jpg", "CoeurChicC04.jpg"
     ],
-    "colors": ["white", "black", "cream"],
+    "colors": ["#FAFAFA", "#151414", "#C2A893"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Pull"
   }
