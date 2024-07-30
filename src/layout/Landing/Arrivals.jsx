@@ -1,8 +1,6 @@
 import Button from "../../components/Button";
 import Carousel from "../../components/Carousel";
-
 import news from "/src/data/news.json"
-
 
 export default function Arrivals() {
   return (

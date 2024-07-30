@@ -1,6 +1,8 @@
 import { useState } from "react";
 import collection from "/src/data/collections.json";
-import { ListFilter } from "lucide-react";
+import { ListFilter, Search } from "lucide-react";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 export default function List() {
   const [hover, setHover] = useState(null);
@@ -16,7 +18,7 @@ export default function List() {
     colors: [],
     sizes: [],
     categories: [],
-  })
+  });
 
   const filterSelected = (filterType, value) => {
     setFilters((prevFilters) => ({
@@ -43,6 +45,27 @@ export default function List() {
     return matchesColor && matchesSize && matchesCategory;
   });
 
+  const filterContainer = useRef()
+
+  const [showFilter, setShowFilter] = useState(false);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (filterContainer.current && !filterContainer.current.contains(e.target)) {
+        handleShowFilter(); 
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, []); 
+
+  const handleShowFilter = () => {
+    setShowFilter((prev) => !prev);
+  };
 
 
   const handleMouseEnter = (id) => {
@@ -85,64 +108,135 @@ export default function List() {
     }));
   };
 
+  
+
+
+
   return (
     <main className="mt-24 mx-mobile lg:mx-desktop">
       <section className="flex flex-col">
-        <div className="flex">
-          <p>All available</p>
-          <div className="flex">
-            <p>Filter</p>
-            <ListFilter />
-            <h2 className="text-2xl font-bold">Colors</h2>
-            <div className="flex flex-col">
-              {[...new Set(collection.map((item) => item.colors).flat())].map(
-                (color, index) => (
-                  <div key={index}>
-                    <input type="checkbox" id={`color-${color}`} onChange={() => filterSelected("colors", color)}/>
-                    <label htmlFor={`color-${color}`}>{color}</label>
-                  </div>
-                )
-              )}
+        <div className="flex relative">
+          <div className="flex flex-col">
+            <p 
+            onClick={handleShowFilter}
+            className="flex gap-2"
+            >
+              Filter <ListFilter />
+            </p>
+            <div className="flex gap-2">
+            <Search />
+            <input 
+            type="text"
+            placeholder="Rechercher"
+            className="w-full"
+            value={}
+            />
             </div>
 
-            <h2 className="text-2xl font-bold">Sizes</h2>
-            <div className="flex flex-col">
-              {[...new Set(collection.map((item) => item.sizes).flat())].map(
-                (size, index) => (
-                  <div key={index}>
-                    <input type="checkbox" id={`size-${size}`} onChange={() => filterSelected("sizes", size)}/>
-                    <label htmlFor={`size-${size}`}>{size}</label>
-                  </div>
-                )
-              )}
-            </div>
+            {showFilter && (
+              <aside 
+              ref={ filterContainer }
+              className="fixed flex flex-col gap-5 z-30 left-0 p-5 bg-50 mx-mobile lg:mx-desktop ">
+                <span 
+                onClick={ handleShowFilter}
+                className="absolute right-6"
+                >Close X</span>
+                <h2 className="text-2xl font-bold">Colors</h2>
+                <div className="flex flex-wrap w-fit h-full gap-5 ">
+                  {[
+                    ...new Set(collection.map((item) => item.colors).flat()),
+                  ].map((color, index) => (
+                    <div
+                      key={index}
+                      className="relative flex flex-col items-center justify-center h-full"
+                    >
+                      <input
+                        type="checkbox"
+                        id={`color-${color}`}
+                        onChange={() => filterSelected("colors", color)}
+                        style={{ backgroundColor: color }}
+                        className="appearance-none size-7 rounded-full cursor-pointer checked:ring-2 checked:ring-blue-500"
+                      />
+                      <label
+                        htmlFor={`color-${color}`}
+                        className="text-950 text-sm cursor-pointer"
+                      >
+                        {convertColor(color)}
+                      </label>
+                    </div>
+                  ))}
+                </div>
 
-            <h2 className="text-2xl font-bold">Categorie</h2>
-            <div className="flex flex-col">
-              {[...new Set(collection.map((item) => item.categorie))].map(
-                (categorie, index) => (
-                  <div key={index}>
-                    <input type="checkbox" id={`categorie-${categorie}`} onChange={() => filterSelected("categories", categorie)}/>
-                    <label htmlFor={`categorie-${categorie}`}>{categorie}</label>
-                  </div>
-                )
-              )}
-            </div>
-            
+                <h2 className="text-2xl font-bold">Sizes</h2>
+                <div className="flex flex-wrap w-fit gap-6 h-full">
+                  {[
+                    ...new Set(collection.map((item) => item.sizes).flat()),
+                  ].map((size, index) => (
+                    <div
+                      key={index}
+                      className="relative flex items-center justify-center w-4 h-6 "
+                    >
+                      <input
+                        id={`size-${size}`}
+                        onChange={() => filterSelected("sizes", size)}
+                        type="checkbox"
+                        className="
+                    appearance-none absolute size-8 bg-950 rounded-full cursor-pointer checked:ring-2 checked:ring-blue-500"
+                      />
+                      <label
+                        htmlFor={`size-${size}`}
+                        className="absolute text-50 text-sm cursor-pointer "
+                      >
+                        {size}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+
+                <h2 className="text-2xl font-bold">Categorie</h2>
+                <div className="flex flex-wrap w-fit gap-4">
+                  {[...new Set(collection.map((item) => item.categorie))].map(
+                    (categorie, index) => (
+                      <div
+                        key={index}
+                        className="relative flex items-center justify-center px-2 py-0.5"
+                      >
+                        <input
+                          type="checkbox"
+                          id={`categorie-${categorie}`}
+                          onChange={() =>
+                            filterSelected("categories", categorie)
+                          }
+                          className="appearance-none absolute border border-900 cursor-pointer rounded-lg w-full h-full checked:bg-900 peer"
+                        />
+                        <label
+                          htmlFor={`categorie-${categorie}`}
+                          className="text-900 peer-checked:text-50 z-10 cursor-pointer"
+                        >
+                          {categorie}
+                        </label>
+                      </div>
+                    )
+                  )}
+                </div>
+              </aside>
+            )}
           </div>
         </div>
-        <aside className="grid grid-cols-4 grid-rows-custom gap-x-5 gap-y-16">
-        {filteredCollection.map((items) => {
-        const selectedColor = selectedColors[items.id];
-        const baseImage = selectedColor
-          ? `${items.collection}${convertColor(selectedColor)}01`
-          : items.imagePreview;
-        const hoverImage = selectedColor
-          ? `${items.collection}${convertColor(selectedColor)}04`
-          : items.imagePreview2;
+        <aside className="grid grid-cols-2 lg:grid-cols-4 grid-rows-custom gap-x-2 lg:gap-x-5 gap-y-16">
+          {filteredCollection.map((items) => {
+            const selectedColor = selectedColors[items.id];
+            const baseImage = selectedColor
+              ? `${items.collection}${convertColor(selectedColor)}01`
+              : items.imagePreview;
+            const hoverImage = selectedColor
+              ? `${items.collection}${convertColor(selectedColor)}04`
+              : items.imagePreview2;
 
             return (
-              <article key={items.id}>
+              <article key={items.id}
+              className="flex flex-col gap-1.5"
+              >
                 <div
                   className="relative"
                   onMouseEnter={() => handleMouseEnter(items.id)}
@@ -158,16 +252,17 @@ export default function List() {
                   />
                   <div
                     className={`${
-                      hover === items.id ? "flex" : "hidden"
-                    } absolute w-full justify-center bottom-6`}
+                      hover === items.id ? "md:flex" : "md:hidden"
+                    } mt-2 lg:mt-0 lg:absolute w-full justify-center lg:bottom-6`}
                   >
-                    <span className="flex gap-4">
+                    <span className="flex gap-2 lg:gap-4 min-h-5">
                       {items.colors.map((color, index) => (
                         <div
                           key={index}
                           className={`
-                          ${items.colors.length > 1 ? "flex" : "hidden"}
-                          size-6 rounded-full border cursor-pointer ${
+                          ${items.colors.length > 1 ? "md:flex" : "md:hidden"}
+                          size-5 lg:size-6 rounded-full border cursor-pointer
+                          ${
                             selectedColor === color ? "ring ring-blue-500" : ""
                           }`}
                           style={{
@@ -182,8 +277,8 @@ export default function List() {
                   </div>
                 </div>
                 <div>
-                  <p>{items.name}</p>
-                  <p>{items.price}</p>
+                  <p className="text-950">{items.name}</p>
+                  <p className="text-800">€{items.price}</p>
                 </div>
               </article>
             );

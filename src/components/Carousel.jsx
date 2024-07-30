@@ -27,7 +27,7 @@ export default function Carousel({ data }) {
   const handleLeave = () => setHover(null);
 
   return (
-    <div ref={containerRef} className="overflow-hidden">
+    <div ref={containerRef} className="overflow-hidden relative">
       <motion.div
         className="flex"
         drag="x"
@@ -61,7 +61,7 @@ export default function Carousel({ data }) {
       </motion.div>
       <ArrowRight
         color="#fafafa"
-        className="absolute right-8 bg-950 rounded-full p-1 lg:size-8"
+        className="absolute right-8 top-[45%] bg-950 rounded-full p-1 lg:size-8"
       />
     </div>
   );
