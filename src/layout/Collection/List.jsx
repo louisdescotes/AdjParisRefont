@@ -1,8 +1,8 @@
 import { useState } from "react";
 import collection from "/src/data/collections.json";
 import { ListFilter, Search } from "lucide-react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function List() {
   const [hover, setHover] = useState(null);
@@ -108,10 +108,6 @@ export default function List() {
     }));
   };
 
-  
-
-
-
   return (
     <main className="mt-24 mx-mobile lg:mx-desktop">
       <section className="flex flex-col">
@@ -129,7 +125,6 @@ export default function List() {
             type="text"
             placeholder="Rechercher"
             className="w-full"
-            value={}
             />
             </div>
 
@@ -237,6 +232,16 @@ export default function List() {
               <article key={items.id}
               className="flex flex-col gap-1.5"
               >
+                <Link
+      to={{
+        pathname: "/ViewProduct",
+        state: { 
+          myProps: { 
+            hello: "Hello World" 
+          } 
+        }
+      }}
+                >
                 <div
                   className="relative"
                   onMouseEnter={() => handleMouseEnter(items.id)}
@@ -280,6 +285,7 @@ export default function List() {
                   <p className="text-950">{items.name}</p>
                   <p className="text-800">€{items.price}</p>
                 </div>
+                </Link>
               </article>
             );
           })}
