@@ -3,9 +3,11 @@ import Landing from "./pages/Landing";
 import Collection from "./pages/Collection";
 import ViewProduct from "./pages/ViewProduct";
 
+import collection from "/src/data/collections.json";
+
+
 export default function App() {
-
-
+  const items = collection
 
   return (
     <Router>

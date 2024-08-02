@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function List() {
   const [hover, setHover] = useState(null);
+  const [idProduit, setIdProduit] = useState()
   const [selectedColors, setSelectedColors] = useState(() => {
     const initialColors = {};
     collection.forEach((item) => {
@@ -232,16 +233,6 @@ export default function List() {
               <article key={items.id}
               className="flex flex-col gap-1.5"
               >
-                <Link
-      to={{
-        pathname: "/ViewProduct",
-        state: { 
-          myProps: { 
-            hello: "Hello World" 
-          } 
-        }
-      }}
-                >
                 <div
                   className="relative"
                   onMouseEnter={() => handleMouseEnter(items.id)}
@@ -284,8 +275,11 @@ export default function List() {
                 <div>
                   <p className="text-950">{items.name}</p>
                   <p className="text-800">€{items.price}</p>
+                  <Link 
+                  to={"/ViewProduct"} 
+                  state={{ idProduit: items.id }}
+                  >Voir le produit</Link>
                 </div>
-                </Link>
               </article>
             );
           })}
