@@ -233,11 +233,16 @@ export default function List() {
               <article key={items.id}
               className="flex flex-col gap-1.5"
               >
+
                 <div
                   className="relative"
                   onMouseEnter={() => handleMouseEnter(items.id)}
                   onMouseLeave={handleMouseLeave}
                 >
+                                   <Link 
+                  to={"/ViewProduct"} 
+                  state={{ idProduit: items.id }}
+                  >
                   <img
                     src={`/collections/${
                       hover === items.id ? hoverImage : baseImage
@@ -246,18 +251,19 @@ export default function List() {
                     draggable={false}
                     className="cursor-pointer"
                   />
+                                  </Link>
                   <div
-                    className={`${
-                      hover === items.id ? "md:flex" : "md:hidden"
-                    } mt-2 lg:mt-0 lg:absolute w-full justify-center lg:bottom-6`}
+                    className={`
+                      mt-2 w-full justify-center`}
                   >
-                    <span className="flex gap-2 lg:gap-4 min-h-5">
+                    {/** MOBILE COLORS */}
+                    <span className="flex lg:hidden gap-2 lg:gap-4 min-h-5">
                       {items.colors.map((color, index) => (
                         <div
                           key={index}
                           className={`
                           ${items.colors.length > 1 ? "md:flex" : "md:hidden"}
-                          size-5 lg:size-6 rounded-full border cursor-pointer
+                          size-5 rounded-full border cursor-pointer
                           ${
                             selectedColor === color ? "ring ring-blue-500" : ""
                           }`}
@@ -267,19 +273,34 @@ export default function List() {
                           onClick={() =>
                             changeImage(items.id, items.collection, color)
                           }
-                        ></div>
+                        >
+                        </div>
                       ))}
                     </span>
+
+                    {/** DESKTOP COLORS */}
+                    <div className="hidden lg:flex size-16 gap-1.5 ">
+                      {items.colors.map((color, index) => {
+                          const transformedColor = convertColor(color);
+                          return (
+                          <img 
+                          key={ index } 
+                          src={`/collections/${items.collection}${transformedColor}01.jpg`}
+                          className=" cursor-pointer"
+                          onClick={() =>
+                            changeImage(items.id, items.collection, color)
+                          }
+                          />
+                        )
+                        })}
+                    </div>
                   </div>
                 </div>
                 <div>
                   <p className="text-950">{items.name}</p>
                   <p className="text-800">€{items.price}</p>
-                  <Link 
-                  to={"/ViewProduct"} 
-                  state={{ idProduit: items.id }}
-                  >Voir le produit</Link>
                 </div>
+
               </article>
             );
           })}
