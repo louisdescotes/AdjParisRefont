@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function List() {
   const [hover, setHover] = useState(null);
-  const [idProduit, setIdProduit] = useState()
+  const [idProduit, setIdProduit] = useState(null);
   const [selectedColors, setSelectedColors] = useState(() => {
     const initialColors = {};
     collection.forEach((item) => {
@@ -46,14 +46,17 @@ export default function List() {
     return matchesColor && matchesSize && matchesCategory;
   });
 
-  const filterContainer = useRef()
+  const filterContainer = useRef();
 
   const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     const handler = (e) => {
-      if (filterContainer.current && !filterContainer.current.contains(e.target)) {
-        handleShowFilter(); 
+      if (
+        filterContainer.current &&
+        !filterContainer.current.contains(e.target)
+      ) {
+        handleShowFilter();
       }
     };
 
@@ -62,12 +65,11 @@ export default function List() {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  }, []); 
+  }, []);
 
   const handleShowFilter = () => {
     setShowFilter((prev) => !prev);
   };
-
 
   const handleMouseEnter = (id) => {
     setHover(id);
@@ -114,29 +116,22 @@ export default function List() {
       <section className="flex flex-col">
         <div className="flex relative">
           <div className="flex flex-col">
-            <p 
-            onClick={handleShowFilter}
-            className="flex gap-2"
-            >
+            <p onClick={handleShowFilter} className="flex gap-2">
               Filter <ListFilter />
             </p>
             <div className="flex gap-2">
-            <Search />
-            <input 
-            type="text"
-            placeholder="Rechercher"
-            className="w-full"
-            />
+              <Search />
+              <input type="text" placeholder="Rechercher" className="w-full" />
             </div>
 
             {showFilter && (
-              <aside 
-              ref={ filterContainer }
-              className="fixed flex flex-col gap-5 z-30 left-0 p-5 bg-50 mx-mobile lg:mx-desktop ">
-                <span 
-                onClick={ handleShowFilter}
-                className="absolute right-6"
-                >Close X</span>
+              <aside
+                ref={filterContainer}
+                className="fixed flex flex-col gap-5 z-30 left-0 p-5 bg-50 mx-mobile lg:mx-desktop "
+              >
+                <span onClick={handleShowFilter} className="absolute right-6">
+                  Close X
+                </span>
                 <h2 className="text-2xl font-bold">Colors</h2>
                 <div className="flex flex-wrap w-fit h-full gap-5 ">
                   {[
@@ -230,77 +225,62 @@ export default function List() {
               : items.imagePreview2;
 
             return (
-              <article key={items.id}
-              className="flex flex-col gap-1.5"
-              >
-
+              <article key={items.id} className="flex flex-col gap-1.5">
                 <div
                   className="relative"
                   onMouseEnter={() => handleMouseEnter(items.id)}
                   onMouseLeave={handleMouseLeave}
                 >
-                                   <Link 
-                  to={"/ViewProduct"} 
-                  state={{ idProduit: items.id }}
-                  >
-                  <img
-                    src={`/collections/${
-                      hover === items.id ? hoverImage : baseImage
-                    }.jpg`}
-                    alt={items.name}
-                    draggable={false}
-                    className="cursor-pointer"
-                  />
-                                  </Link>
-                  <div
-                    className={`
-                      mt-2 w-full justify-center`}
-                  >
-                    {/** MOBILE COLORS */}
+                  <Link to={"/ViewProduct"} state={{ idProduit: items.id, nomProduit: items.collection, colorProduit: selectedColor }}>
+                    <img
+                      src={`/collections/${
+                        hover === items.id ? hoverImage : baseImage
+                      }.jpg`}
+                      alt={items.name}
+                      draggable={false}
+                      className="cursor-pointer"
+                    />
+                  </Link>
+                  <div className="mt-2 w-full justify-center">
+                    {/* MOBILE COLORS */}
                     <span className="flex lg:hidden gap-2 lg:gap-4 min-h-5">
                       {items.colors.map((color, index) => (
                         <div
                           key={index}
-                          className={`
-                          ${items.colors.length > 1 ? "md:flex" : "md:hidden"}
-                          size-5 rounded-full border cursor-pointer
-                          ${
+                          className={`${
+                            items.colors.length > 1 ? "md:flex" : "md:hidden"
+                          } size-5 rounded-full border cursor-pointer ${
                             selectedColor === color ? "ring ring-blue-500" : ""
                           }`}
-                          style={{
-                            backgroundColor: color,
-                          }}
+                          style={{ backgroundColor: color }}
                           onClick={() =>
                             changeImage(items.id, items.collection, color)
                           }
-                        >
-                        </div>
+                        ></div>
                       ))}
                     </span>
-
-                    {/** DESKTOP COLORS */}
-                    <div className="hidden lg:flex size-16 gap-1.5 ">
-                      {items.colors.map((color, index) => {
-                          const transformedColor = convertColor(color);
-                          return (
-                          <img 
-                          key={ index } 
-                          src={`/collections/${items.collection}${transformedColor}01.jpg`}
-                          className=" cursor-pointer"
-                          onClick={() =>
-                            changeImage(items.id, items.collection, color)
-                          }
-                          />
-                        )
-                        })}
-                    </div>
                   </div>
+                </div>
+                {/* DESKTOP COLORS */}
+                <div className="hidden lg:flex w-12 h-full gap-1.5 ">
+                  {items.colors.map((color, index) => {
+                    const transformedColor = convertColor(color);
+                    return (
+                      <img
+                        key={index}
+                        src={`/collections/${items.collection}${transformedColor}01.jpg`}
+                        className=" cursor-pointer object-cover"
+                        onClick={() =>
+                          changeImage(items.id, items.collection, color)
+                        }
+                      />
+                    );
+                  })}
                 </div>
                 <div>
                   <p className="text-950">{items.name}</p>
                   <p className="text-800">€{items.price}</p>
                 </div>
-
               </article>
             );
           })}
