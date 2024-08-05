@@ -7,12 +7,12 @@ import { useState } from "react";
 
 export default function Product() {
   const location = useLocation();
-  const { idProduit, nomProduit, colorProduit } = location.state || {};
+  let { idProduit, nomProduit, colorProduit } = location.state || {};
 
   const items = collection[idProduit - 1];
 
   // Change color
-  const convertColor = (color) => {
+  let convertColor = (color) => {
     switch (color) {
       case "#151414":
         return "B";
@@ -32,13 +32,17 @@ export default function Product() {
         return "R";
       case "#3F3C2F":
         return "M";
-      default:
-        return "";
     }
   };
-  const colorConverted = convertColor(colorProduit);
 
-  console.log({ idProduit, nomProduit, colorConverted });
+  if (colorProduit === null) {
+    colorProduit = items.colors[0]
+  }
+
+  const colorConverted = convertColor(colorProduit);
+  console.log(colorConverted)
+
+
   const imagesSelected = [];
 
   for (let $i = 1; $i < 5; $i++) {
