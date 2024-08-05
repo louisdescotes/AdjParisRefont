@@ -8,8 +8,8 @@ export default function Quantity() {
   const Decrement = () => setQuantity(quantity > 1 ? quantity -1 : quantity-0);
 
   return (
-    <div className="flex justify-between items-center px-3.5 py-3 border border-700 rounded">
-      <button onClick={Decrement}>-</button>
+    <div className="flex justify-between items-center px-3.5 py-3 border border-700 rounded max-w-[16rem] w-1/2">
+      <button onClick={() => Decrement()}>-</button>
       <span>{quantity}</span>
       <button onClick={Increment}>+</button>
     </div>

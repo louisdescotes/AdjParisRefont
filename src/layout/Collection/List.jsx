@@ -119,10 +119,10 @@ export default function List() {
             <p onClick={handleShowFilter} className="flex gap-2">
               Filter <ListFilter />
             </p>
-            <div className="flex gap-2">
+            {/* <div className="flex gap-2">
               <Search />
               <input type="text" placeholder="Rechercher" className="w-full" />
-            </div>
+            </div> */}
 
             {showFilter && (
               <aside
