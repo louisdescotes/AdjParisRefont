@@ -104,6 +104,31 @@ export default function List() {
     }
   };
 
+  const convertColor2 = (color) => {
+    switch (color) {
+      case "#151414":
+        return "Black";
+      case "#FAFAFA":
+        return "White";
+      case "#FEA480":
+        return "Orange";
+      case "#C2D8EF":
+        return "Azur";
+      case "#AEE4DD":
+        return "Lime";
+      case "#C2A893":
+        return "Cream";
+      case "#5D5B70":
+        return "Grey";
+      case "#C5766F":
+        return "Rose";
+      case "#3F3C2F":
+        return "Military";
+      default:
+        return "";
+    }
+  };
+
   const changeImage = (id, name, color) => {
     setSelectedColors((prevColors) => ({
       ...prevColors,
@@ -127,13 +152,19 @@ export default function List() {
             {showFilter && (
               <aside
                 ref={filterContainer}
-                className="fixed flex flex-col gap-5 z-30 left-0 p-5 bg-50 mx-mobile lg:mx-desktop "
+                className="fixed flex flex-col gap-5 z-30 left-0 mx-mobile lg:mx-desktop "
               >
-                <span onClick={handleShowFilter} className="absolute right-6">
+                <div className="relative flex items-center justify-center w-full h-8 rounded-t-lg bg-950">
+                  <span className="flex gap-1 text-50">
+                  Filter <ListFilter />
+                  </span>
+                </div>
+                <div className="relative px-8 rounded-b-lg bg-50 w-full h-full py-8 -my-5">
+                <span onClick={handleShowFilter} className="absolute top-2 right-6">
                   Close X
                 </span>
-                <h2 className="text-2xl font-bold">Colors</h2>
-                <div className="flex flex-wrap w-fit h-full gap-5 ">
+                <h2 className="text-2xl font-bold pb-2">Colors</h2>
+                <div className="flex flex-wrap w-fit h-full gap-5 pb-4">
                   {[
                     ...new Set(collection.map((item) => item.colors).flat()),
                   ].map((color, index) => (
@@ -152,14 +183,14 @@ export default function List() {
                         htmlFor={`color-${color}`}
                         className="text-950 text-sm cursor-pointer"
                       >
-                        {convertColor(color)}
+                        {convertColor2(color)}
                       </label>
                     </div>
                   ))}
                 </div>
 
-                <h2 className="text-2xl font-bold">Sizes</h2>
-                <div className="flex flex-wrap w-fit gap-6 h-full">
+                <h2 className="text-2xl font-bold pb-2">Sizes</h2>
+                <div className="flex flex-wrap w-fit gap-6 h-full ml-2 pb-4">
                   {[
                     ...new Set(collection.map((item) => item.sizes).flat()),
                   ].map((size, index) => (
@@ -172,11 +203,11 @@ export default function List() {
                         onChange={() => filterSelected("sizes", size)}
                         type="checkbox"
                         className="
-                    appearance-none absolute size-8 bg-950 rounded-full cursor-pointer checked:ring-2 checked:ring-blue-500"
+                    appearance-none absolute size-8 text-950 border border-950 bg-50 rounded-full cursor-pointer checked:bg-950 peer"
                       />
                       <label
                         htmlFor={`size-${size}`}
-                        className="absolute text-50 text-sm cursor-pointer "
+                        className="absolute peer text-sm cursor-pointer peer-checked:text-50 "
                       >
                         {size}
                       </label>
@@ -184,13 +215,13 @@ export default function List() {
                   ))}
                 </div>
 
-                <h2 className="text-2xl font-bold">Categorie</h2>
-                <div className="flex flex-wrap w-fit gap-4">
+                <h2 className="text-2xl font-bold pb-2">Categorie</h2>
+                <div className="flex flex-wrap w-fit gap-4 pb-4">
                   {[...new Set(collection.map((item) => item.categorie))].map(
                     (categorie, index) => (
                       <div
                         key={index}
-                        className="relative flex items-center justify-center px-2 py-0.5"
+                        className="relative  flex items-center justify-center px-2 py-0.5"
                       >
                         <input
                           type="checkbox"
@@ -210,6 +241,10 @@ export default function List() {
                     )
                   )}
                 </div>
+                </div>
+                
+
+               
               </aside>
             )}
           </div>

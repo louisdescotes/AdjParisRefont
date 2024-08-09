@@ -3,10 +3,27 @@ import logo from "/logo/logo.png";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../Hook/ShopContext";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 export default function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenShop, setIsOpenShop] = useState(false);
+
+  const shopMenu = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (shopMenu.current && !shopMenu.current.contains(e.target)) {
+        setIsOpenShop(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [shopMenu])
+  
 
   const handleMenu = () => {
     setIsOpenMenu((prev) => !prev);
@@ -17,8 +34,6 @@ export default function Header() {
   };
 
   const { quantity, setQuantity, itemsToBuy, handleDelete } = useContext(ShopContext);
-
-  console.log(itemsToBuy)
 
   const renameColor = (color) => {
     switch (color) {
@@ -43,6 +58,7 @@ export default function Header() {
     }
   };
 
+
   return (
     <nav className="fixed top-0 h-20 w-full flex items-center z-50 bg-white">
       <div className="relative w-full h-full flex justify-start items-center mx-mobile lg:mx-desktop">
@@ -50,23 +66,32 @@ export default function Header() {
       </div>
 
       {/** SHOP */}
-      <div className=" relative w-auto h-full flex justify-end gap-5 items-center mx-mobile lg:mx-desktop  cursor-pointer">
-        <ShoppingBag onClick={handleShop} />
-
+      <div 
+     
+      className=" relative w-auto h-full flex justify-end gap-5 items-center mx-mobile lg:mx-desktop  cursor-pointer"
+      >
         <div
-          className={`${
-            itemsToBuy.length > 0 ? "flex" : "hidden"
-          } absolute left-3 top-4 flex items-center justify-center rounded-full size-5 text-xs text-50 bg-[#F06059]`}
-        >
-          {itemsToBuy.length}
+         onClick={handleShop}>
+        <ShoppingBag  />
+
+<div
+  className={`${
+    itemsToBuy.length > 0 ? "flex" : "hidden"
+  } absolute left-3 top-4 flex items-center justify-center rounded-full size-5 text-xs text-50 bg-[#F06059]`}
+>
+  {itemsToBuy.length}
+</div>
         </div>
+        
         
         <div
           className={`${isOpenShop ? "flex" : "hidden"}
         absolute rounded-t-xl flex-col top-16 right-0 lg:right-20 flex bg-50 border rounded w-96 h-auto min-h-96 max-h-96 overflow-scroll overflow-x-hidden 
         `}
         >
-          <div className="relative ">
+          <div 
+          ref={shopMenu}
+          className="relative ">
           <div className="sticky flex justify-center items-center left-0 top-0 h-10 w-full text-50 bg-950 rounded-t-xl">
           <p>Panier</p>
         </div>
@@ -76,7 +101,7 @@ export default function Header() {
                 <div className="flex gap-2">
                   <div className="w-40">
                     <img
-                      src={`/collections/${item.image}${index + 1}.jpg`}
+                      src={`/collections/${item.image}1.jpg`}
                       alt={item.name}
                     />
                   </div>
@@ -118,7 +143,7 @@ export default function Header() {
           onClick={handleMenu}
         />
         {isOpenMenu && (
-          <div className="absolute flex-col w-screen h-screen top-20 right-1 bg-white  p-4">
+          <div className="absolute flex-col w-screen h-screen top-20 -right-8 bg-white  p-4">
             <div className="absolute right-6 flex flex-col justify-end w-fit">
               <Link to="/">Accueil</Link>
               <hr />

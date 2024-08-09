@@ -45,6 +45,7 @@ export default function Shop({ item, colorSelected, sizeSelected }) {
   // Add to shop 
   const addToShop = ( colorSelected, sizeSelected ) => { 
     const newItem = {
+      id: item.id,
       name: item.name,
       price: item.price,
       color: colorSelected,

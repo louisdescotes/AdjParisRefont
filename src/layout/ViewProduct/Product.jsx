@@ -36,23 +36,12 @@ export default function Product() {
     }
   };
 
-  if (colorProduit === null) {
-    colorProduit = items.colors[0]
-  }
 
-  const colorConverted = convertColor(colorProduit);
-
-  const imagesSelected = [];
-
-  for (let $i = 1; $i < 5; $i++) {
-    let imageSrc = `${nomProduit}${colorConverted}0${$i}.jpg`;
-    imagesSelected.push(imageSrc);
-  }
 
   // Size - Color selected
 
   const [sizeSelected, setSizeSelected] = useState("");
-  const [colorSelected, setColorSelected] = useState("");
+  const [colorSelected, setColorSelected] = useState(items.colors[0]);
 
   const handleSizeSelected = (size) => {
     setSizeSelected(size);
@@ -60,6 +49,15 @@ export default function Product() {
   const handleColorSelected = (color) => {
     setColorSelected(color);
   };
+  
+  const colorConverted = convertColor(colorSelected);
+
+  const imagesSelected = [];
+
+  for (let $i = 1; $i < 5; $i++) {
+    let imageSrc = `${nomProduit}${colorConverted}0${$i}.jpg`;
+    imagesSelected.push(imageSrc);
+  }
 
   // Open Description
   const [isOpen, setIsOpen] = useState(false);
@@ -126,7 +124,6 @@ export default function Product() {
                 className={`${sizeSelected !== "" && sizeSelected == size ? "ring-2 ring-blue-500" : ""} flex gap-2.5 justify-center items-center border border-700 rounded size-6 p-4 cursor-pointer`}
                 onClick={() => handleSizeSelected(size)}
               >
-                {console.log(sizeSelected, size)}
                 {size}
               </span>
             ))}
@@ -141,7 +138,9 @@ export default function Product() {
             {items.colors.map((color, index) => (
               <input
                 key={index}
-                className="appearance-none flex justify-center items-center border border-700 rounded-full size-3 p-3 cursor-pointer checked:ring-2 checked:ring-blue-500"
+                className={`
+                ${color === colorSelected ? "ring-2 ring-blue-500" : ""}
+                appearance-none flex justify-center items-center border border-700 rounded-full size-3 p-3 cursor-pointer`}
                 style={{ backgroundColor: color }}
                 onClick={() => {
                   handleColorSelected(color);

@@ -72,10 +72,9 @@
     "TokyoW01.jpg", "TokyoW02.jpg", "TokyoW03.jpg", "TokyoW04.jpg",
     "TokyoB01.jpg", "TokyoB02.jpg", "TokyoB03.jpg", "TokyoB04.jpg",
     "TokyoC01.jpg", "TokyoC02.jpg", "TokyoC03.jpg", "TokyoC04.jpg",
-    "TokyoL01.jpg", "TokyoL02.jpg", "TokyoL03.jpg", "TokyoL04.jpg",
     "TokyoA01.jpg", "TokyoA02.jpg", "TokyoA03.jpg", "TokyoA04.jpg"
   ],
-    "colors": ["#FEA480", "#FAFAFA", "#151414", "#C2A893", "#AEE4DD", "#C2D8EF"],
+    "colors": ["#FEA480", "#FAFAFA", "#151414", "#C2A893", "#C2D8EF"],
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "categorie": "Tshirt"
   },
